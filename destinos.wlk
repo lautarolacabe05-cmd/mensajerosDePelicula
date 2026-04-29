@@ -1,7 +1,7 @@
 import mensajeros.*
 object puenteBrooklyn {
     method puedePasar(mensajero) {
-      return (mensajero.verPesoTotal()).max(1000) <= 1000
+      return mensajero.verPesoTotal()<= 1000
     }
 }
 
