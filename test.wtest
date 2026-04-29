@@ -1,0 +1,65 @@
+import empresas.*
+import mensajeros.*
+import destinos.*
+import paquetes.*
+
+describe "parte 1" {
+    test "roberto puede entregar un paquete a puenteBrooklyn" {
+        camion.cantidadAcoplados(1)
+        roberto.pesoTotal(90, camion)
+        paquete.estaPago(true)
+        assert.that(!roberto.puedeEntregarPaquete(paquete, puenteBrooklyn))
+    }
+    test "roberto puede entregar un paquete a laMatrix" {
+        camion.cantidadAcoplados(1)
+        roberto.pesoTotal(90, camion)
+        paquete.estaPago(true)
+        assert.that(!roberto.puedeEntregarPaquete(paquete, laMatrix)) 
+    }
+    test "neo puede entregar un paquete a puenteBrooklyn" {
+        neo.comprarCredito()
+        paquete.estaPago(true)
+        assert.that(neo.puedeEntregarPaquete(paquete, puenteBrooklyn))
+    }
+
+    test "neo puede entregar un paquete a laMatrix" {
+        neo.comprarCredito()
+        paquete.estaPago(true)
+        assert.that(neo.puedeEntregarPaquete(paquete, laMatrix))
+    }
+}
+
+describe "parte 2" {
+    test "contratar empleado" {
+        mensajeria.contratarMensajero(roberto)
+        assert.equals(mensajeria.listaDeMensajeros(),[roberto])
+  }
+    test "despedir empleado" {
+        mensajeria.contratarMensajero(roberto)
+        mensajeria.despedirMensajero(roberto)
+        assert.equals(mensajeria.listaDeMensajeros(), [])
+    }
+
+    test "despedir a todos los empleados" {
+        mensajeria.contratarMensajero(roberto)
+        mensajeria.contratarMensajero(chuckNorris)
+        mensajeria.despedirATodos()
+        assert.equals(mensajeria.listaDeMensajeros(), [])
+    }
+    test "la mensajeria es grande" {
+        mensajeria.contratarMensajero(roberto)
+        mensajeria.contratarMensajero(chuckNorris)
+        mensajeria.contratarMensajero(neo)
+        assert.that(mensajeria.mensajeriaEsGrande())
+    }
+    test "puede el primer mensajero entregar un paquete a puenteBrooklyn" {
+        mensajeria.contratarMensajero(roberto)
+        paquete.estaPago(true)
+        assert.that(mensajeria.puedePrimerMensajeroEntregarPaquete(paquete, puenteBrooklyn))
+    }
+    test "peso del ultimo mensajero" {
+        mensajeria.contratarMensajero(chuckNorris)
+        chuckNorris.verPesoTotal()
+        assert.equals(mensajeria.pesoDelUltimoMensajero(), chuckNorris.verPesoTotal())
+    }
+}
