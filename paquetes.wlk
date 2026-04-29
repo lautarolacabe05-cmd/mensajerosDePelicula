@@ -43,7 +43,7 @@ object paquetonViajero {
         }
     }
     method puedeLLevarlo(mensajero) {
-      return destinos.all(n => n.puedePasar(mensajero))
+      return destinos.all({n => n.puedePasar(mensajero)})
     }
 }
 
