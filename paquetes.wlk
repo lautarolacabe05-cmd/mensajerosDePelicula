@@ -6,7 +6,7 @@ object paquete {
 }
 
 object paquetito {
-    var destino = null
+    var destino = laMatrix
     method seleccionarDestino(destinoElegido) {
         destino = destinoElegido
     }
@@ -48,9 +48,9 @@ object paquetonViajero {
 }
 
 object paqueteDeLujo {
-    var precio = null
+    var precio = 0
     var cantidadPagada = 0
-    var destino = null
+    var destino = laMatrix
     method seleccionarDestino(destinoElegido) {
         destino = destinoElegido
     }
