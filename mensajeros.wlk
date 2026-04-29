@@ -34,8 +34,11 @@ object neo {
     method puedeEntregarPaquete(paquete) {
       return paquete.puedeLLevarlo(self) && paquete.estaPago()
     }
-    method comprarCredito() {
-        credito += 10
+    method comprarCredito(valor) {
+        credito += valor
+    }
+    methods consumirCredito(valor){
+        crédito = (crédito - valor).max(0)
     }
     method verPesoTotal() {
         return 0
