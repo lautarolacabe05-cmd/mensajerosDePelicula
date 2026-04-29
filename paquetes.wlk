@@ -1,5 +1,8 @@
 object paquete {
-    var property estaPago = false
+    var estaPago = false
+   method sumarPaga(){
+    está pago = true
+}
 }
 
 object paquetito {
